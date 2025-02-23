@@ -1,52 +1,45 @@
-// Karanlık Mod Aç/Kapat ve Tercihi Kaydet
-const darkModeToggle = document.getElementById('dark-mode-toggle');
+// Karanlık Mod Aç/Kapat
+const darkModeToggle = document.createElement("button");
+darkModeToggle.innerText = "🌙 Karanlık Mod";
+darkModeToggle.style.position = "fixed";
+darkModeToggle.style.top = "20px";
+darkModeToggle.style.right = "20px";
+darkModeToggle.style.padding = "10px";
+darkModeToggle.style.border = "none";
+darkModeToggle.style.borderRadius = "5px";
+darkModeToggle.style.cursor = "pointer";
+darkModeToggle.style.backgroundColor = "#222";
+darkModeToggle.style.color = "white";
+document.body.appendChild(darkModeToggle);
 
-if (localStorage.getItem('darkMode') === 'enabled') {
-    document.body.classList.add('dark-mode');
-}
+// Karanlık Mod Geçişi
+darkModeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
 
-darkModeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-
-    if (document.body.classList.contains('dark-mode')) {
-        localStorage.setItem('darkMode', 'enabled');
+    if (document.body.classList.contains("dark-mode")) {
+        localStorage.setItem("darkMode", "enabled");
+        darkModeToggle.innerText = "☀️ Aydınlık Mod";
     } else {
-        localStorage.setItem('darkMode', 'disabled');
+        localStorage.setItem("darkMode", "disabled");
+        darkModeToggle.innerText = "🌙 Karanlık Mod";
     }
 });
 
-// Arama Fonksiyonu
-const searchBar = document.getElementById('search-bar');
-const items = document.querySelectorAll('.mimar, .yapi');
-const noResultsMessage = document.getElementById('no-results');
+// Kullanıcı tercihini sakla
+if (localStorage.getItem("darkMode") === "enabled") {
+    document.body.classList.add("dark-mode");
+    darkModeToggle.innerText = "☀️ Aydınlık Mod";
+}
 
-searchBar.addEventListener('keyup', function () {
-    let filter = searchBar.value.toLowerCase();
-    let visibleItems = 0;
-
-    items.forEach(item => {
-        let text = item.innerText.toLowerCase();
-        if (text.includes(filter)) {
-            item.style.display = "";
-            visibleItems++;
-        } else {
-            item.style.display = "none";
-        }
-    });
-
-    // Eğer sonuç yoksa bir mesaj göster
-    noResultsMessage.textContent = visibleItems === 0 ? 'Sonuç bulunamadı 😔' : '';
-});
-
-// Sayfa Kaydırıldığında Kartları Görünür Hale Getirme
+// Sayfa Kaydırıldığında Kartların Görünmesi
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+            entry.target.classList.add("visible");
         }
     });
-}, { threshold: 0.2 });
+}, { threshold: 0.3 });
 
-document.querySelectorAll('.mimar, .yapi').forEach((element) => {
+document.querySelectorAll(".mimar, .yapi").forEach((element) => {
     observer.observe(element);
 });
