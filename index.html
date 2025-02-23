@@ -2,83 +2,61 @@
 <html lang="tr">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dünyaca Ünlü Mimarlar ve Yapılar</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mimari Tasarım Sitesi</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <header>
-    <h1>Dünyaca Ünlü Mimarlar ve Yapılar</h1>
-    <nav>
-      <ul>
-        <li><a href="#mimarlar">Mimarlar</a></li>
-        <li><a href="#yapilar">Yapılar</a></li>
-        <li><a href="#iletisim">İletişim</a></li>
-      </ul>
-    </nav>
-    <button id="dark-mode-toggle">🌙 Karanlık Mod</button>
-  </header>
+    <header>
+        <h1>Dünyaca Ünlü Mimarlar ve Yapılar</h1>
+        <nav>
+            <ul>
+                <li><a href="#mimarlar">Mimarlar</a></li>
+                <li><a href="#yapilar">Yapılar</a></li>
+                <li><a href="#iletisim">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <main>
-    <input type="text" id="search-bar" placeholder="Mimar veya yapı ara...">
-    <section id="mimarlar">
-      <h2>Mimarlar</h2>
-      <div class="mimar">
-        <img src="zaha_hadid.jpg" alt="Zaha Hadid">
-        <h3>Zaha Hadid</h3>
-        <p>Zaha Hadid, modern mimaride devrim yaratan projelere imza atmış, Pritzker Mimarlık Ödülü'nü kazanan ilk kadın mimardır.</p>
-        <a href="https://www.zaha-hadid.com" target="_blank">Daha Fazla Bilgi</a>
-      </div>
+    <main>
+        <section id="mimarlar">
+            <h2>Mimarlar</h2>
+            <div class="mimar">
+                <img src="images/zaha_hadid.jpg" alt="Zaha Hadid">
+                <h3>Zaha Hadid</h3>
+                <p>Modern mimaride devrim yaratan Zaha Hadid, Pritzker Mimarlık Ödülü'nü kazanan ilk kadın mimardır.</p>
+            </div>
 
-      <div class="mimar">
-        <img src="frank_gehry.jpg" alt="Frank Gehry">
-        <h3>Frank Gehry</h3>
-        <p>Frank Gehry, dekonstrüktivist mimarlığın öncüsü olarak bilinir. Guggenheim Müzesi gibi ikon haline gelmiş yapıları vardır.</p>
-        <a href="https://www.foga.com" target="_blank">Daha Fazla Bilgi</a>
-      </div>
+            <div class="mimar">
+                <img src="images/frank_gehry.jpg" alt="Frank Gehry">
+                <h3>Frank Gehry</h3>
+                <p>Frank Gehry, dekonstrüktivist mimarlığın öncüsü olup Guggenheim Müzesi gibi ikonik yapılar tasarlamıştır.</p>
+            </div>
+        </section>
 
-      <div class="mimar">
-        <img src="tadao_ando.jpg" alt="Tadao Ando">
-        <h3>Tadao Ando</h3>
-        <p>Tadao Ando, minimalizm ve beton kullanımıyla tanınan Japon mimar, 1995 yılında Pritzker Mimarlık Ödülü'nü kazanmıştır.</p>
-        <a href="https://www.tadao-ando.com" target="_blank">Daha Fazla Bilgi</a>
-      </div>
-    </section>
+        <section id="yapilar">
+            <h2>Yapılar</h2>
+            <div class="yapi">
+                <img src="images/heydar_aliyev.jpg" alt="Heydar Aliyev Merkezi">
+                <h3>Heydar Aliyev Merkezi</h3>
+                <p>Zaha Hadid tarafından tasarlanan bu merkez, dalgalı hatlarıyla ünlüdür.</p>
+            </div>
 
-    <section id="yapilar">
-      <h2>Yapılar</h2>
-      <div class="yapi">
-        <img src="heydar_aliyev.jpg" alt="Heydar Aliyev Merkezi">
-        <h3>Heydar Aliyev Merkezi</h3>
-        <p>Zaha Hadid tarafından tasarlanmış, dalgalı hatlarıyla dikkat çeken Bakü'de bulunan bir yapıdır.</p>
-        <a href="https://www.heydaraliyevcenter.az" target="_blank">Daha Fazla Bilgi</a>
-      </div>
+            <div class="yapi">
+                <img src="images/guggenheim.jpg" alt="Guggenheim Müzesi">
+                <h3>Guggenheim Müzesi</h3>
+                <p>Frank Gehry tarafından tasarlanan, Bilbao'da bulunan çağdaş sanat müzesidir.</p>
+            </div>
+        </section>
+    </main>
 
-      <div class="yapi">
-        <img src="guggenheim.jpg" alt="Guggenheim Müzesi">
-        <h3>Guggenheim Müzesi</h3>
-        <p>Frank Gehry tarafından tasarlanmış, Bilbao'da bulunan çağdaş sanat müzesidir.</p>
-        <a href="https://www.guggenheim.org" target="_blank">Daha Fazla Bilgi</a>
-      </div>
+    <footer>
+        <p>&copy; 2025 Mimari Tasarım Web Sitesi</p>
+    </footer>
 
-      <div class="yapi">
-        <img src="church_of_the_light.jpg" alt="Church of the Light">
-        <h3>Church of the Light</h3>
-        <p>Tadao Ando tarafından tasarlanmış, minimalizm ve ışığın etkisiyle öne çıkan Japonya'da bulunan bir yapıdır.</p>
-        <a href="https://www.andotadao.org" target="_blank">Daha Fazla Bilgi</a>
-      </div>
-    </section>
-    <p id="no-results" style="text-align: center; font-size: 18px; color: #666;"></p>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Mimari Tasarım Web Sitesi</p>
-  </footer>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
