@@ -1,10 +1,70 @@
+// Karanlık Mod Aç/Kapat Butonu
+const darkModeToggle = document.createElement("button");
+darkModeToggle.innerText = "🌙 Karanlık Mod";
+darkModeToggle.style.position = "fixed";
+darkModeToggle.style.top = "20px";
+darkModeToggle.style.right = "20px";
+darkModeToggle.style.padding = "10px";
+darkModeToggle.style.border = "none";
+darkModeToggle.style.borderRadius = "5px";
+darkModeToggle.style.cursor = "pointer";
+darkModeToggle.style.backgroundColor = "#222";
+darkModeToggle.style.color = "white";
+document.body.appendChild(darkModeToggle);
+
+// Karanlık Mod Geçişi ve Yerel Depolama Kaydı
+darkModeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+
+    if (document.body.classList.contains("dark-mode")) {
+        localStorage.setItem("darkMode", "enabled");
+        darkModeToggle.innerText = "☀️ Aydınlık Mod";
+    } else {
+        localStorage.setItem("darkMode", "disabled");
+        darkModeToggle.innerText = "🌙 Karanlık Mod";
+    }
+});
+
+// Sayfa Yenilendiğinde Karanlık Modu Koru
+if (localStorage.getItem("darkMode") === "enabled") {
+    document.body.classList.add("dark-mode");
+    darkModeToggle.innerText = "☀️ Aydınlık Mod";
+}
+
+
 /* Genel Stil */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
     color: #333;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Karanlık Mod Stili */
+.dark-mode {
+    background-color: #222 !important;
+    color: white !important;
+}
+
+.dark-mode header {
+    background-color: #111 !important;
+}
+
+.dark-mode .mimar, .dark-mode .yapi {
+    background-color: #333 !important;
+    color: white !important;
+}
+
+.dark-mode #search-bar {
+    background-color: #444 !important;
+    color: white !important;
+    border: 2px solid #777 !important;
+}
+
+.dark-mode footer {
+    background: #111 !important;
 }
 
 /* Header */
@@ -15,20 +75,31 @@ header {
     text-align: center;
 }
 
+/* Navigasyon Menüsü */
 nav ul {
     list-style: none;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
 }
 
 nav ul li {
-    display: inline;
-    margin: 0 15px;
+    position: relative;
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+    background: #FFD700;
+    color: black;
+    border-radius: 5px;
 }
 
 /* Bölümler */
@@ -44,39 +115,46 @@ section {
     margin: 20px auto;
     width: 80%;
     max-width: 600px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    cursor: pointer;
+}
+
+.mimar:hover, .yapi:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Resimler */
 .mimar img, .yapi img {
     width: 100%;
-    max-height: 300px;
+    height: 250px;
     object-fit: cover;
     border-radius: 10px;
 }
 
-/* Footer */
-footer {
-    background: #222;
-    color: white;
-    text-align: center;
-    padding: 15px;
-    margin-top: 20px;
-}
-/* Karanlık Mod Stili */
-.dark-mode {
-    background-color: #222;
-    color: white;
-}
-
-.dark-mode header {
-    background-color: #111;
+/* Arama Çubuğu */
+#search-bar {
+    width: 80%;
+    max-width: 400px;
+    padding: 12px;
+    margin: 20px auto;
+    display: block;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    transition: background 0.3s ease, color 0.3s ease, border 0.3s ease;
 }
 
-.dark-mode .mimar, .dark-mode .yapi {
-    background-color: #333;
-    color: white;
+/* Kartların Açılır İçeriği */
+.mimar p, .yapi p {
+    display: none;
+    margin-top: 10px;
+}
+
+.mimar.active p, .yapi.active p {
+    display: block;
 }
 
 /* Animasyonlar */
@@ -89,4 +167,29 @@ footer {
 .mimar.visible, .yapi.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Footer */
+footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+/* Responsive Tasarım */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .mimar, .yapi {
+        width: 90%;
+    }
+
+    .mimar img, .yapi img {
+        height: 200px;
+    }
 }
