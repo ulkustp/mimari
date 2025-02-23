@@ -1,38 +1,4 @@
-console.log("Web sitesi başarıyla yüklendi!");
-// Karanlık Mod Aç/Kapat
-const darkModeToggle = document.getElementById('dark-mode-toggle');
-darkModeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-});
-
-// Arama Fonksiyonu
-const searchBar = document.getElementById('search-bar');
-searchBar.addEventListener('keyup', function () {
-    let filter = searchBar.value.toLowerCase();
-    let items = document.querySelectorAll('.mimar, .yapi');
-
-    items.forEach(item => {
-        let text = item.innerText.toLowerCase();
-        if (text.includes(filter)) {
-            item.style.display = "";
-        } else {
-            item.style.display = "none";
-        }
-    });
-});
-// Sayfa kaydırıldığında kartları görünür hale getir
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, { threshold: 0.2 });
-
-document.querySelectorAll('.mimar, .yapi').forEach((element) => {
-    observer.observe(element);
-});
-// Karanlık Modu Aç/Kapat ve Kullanıcı Tercihini Kaydet
+// Karanlık Mod Aç/Kapat ve Tercihi Kaydet
 const darkModeToggle = document.getElementById('dark-mode-toggle');
 
 if (localStorage.getItem('darkMode') === 'enabled') {
@@ -48,10 +14,11 @@ darkModeToggle.addEventListener('click', () => {
         localStorage.setItem('darkMode', 'disabled');
     }
 });
-// Arama Fonksiyonuna Mesaj Ekle
+
+// Arama Fonksiyonu
 const searchBar = document.getElementById('search-bar');
 const items = document.querySelectorAll('.mimar, .yapi');
-const main = document.querySelector('main');
+const noResultsMessage = document.getElementById('no-results');
 
 searchBar.addEventListener('keyup', function () {
     let filter = searchBar.value.toLowerCase();
@@ -68,15 +35,18 @@ searchBar.addEventListener('keyup', function () {
     });
 
     // Eğer sonuç yoksa bir mesaj göster
-    let noResults = document.getElementById('no-results');
-    if (!noResults) {
-        noResults = document.createElement('p');
-        noResults.id = 'no-results';
-        noResults.style.textAlign = 'center';
-        noResults.style.fontSize = '18px';
-        noResults.style.color = '#666';
-        main.appendChild(noResults);
-    }
+    noResultsMessage.textContent = visibleItems === 0 ? 'Sonuç bulunamadı 😔' : '';
+});
 
-    noResults.textContent = visibleItems === 0 ? 'Sonuç bulunamadı 😔' : '';
+// Sayfa Kaydırıldığında Kartları Görünür Hale Getirme
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('.mimar, .yapi').forEach((element) => {
+    observer.observe(element);
 });
