@@ -70,3 +70,14 @@ footer {
     background-color: #333;
     color: white;
 }
+/* Kartlara animasyon ekleyelim */
+.mimar, .yapi {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.mimar.visible, .yapi.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
