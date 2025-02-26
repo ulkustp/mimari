@@ -168,3 +168,10 @@ footer {
     border-radius: 10px;
     aspect-ratio: 16 / 9;
 }
+.mimar img, .yapi img {
+    width: 100%;
+    height: auto;  /* Yüksekliği otomatik ayarla */
+    aspect-ratio: 16 / 9;  /* En-boy oranını koru */
+    object-fit: cover; /* Resmin kırpılmasını önle */
+    border-radius: 10px;
+}
